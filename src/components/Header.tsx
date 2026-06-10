@@ -1,0 +1,90 @@
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import BrandLogo from "./BrandLogo";
+
+const links = [
+  { label: "Sobre", href: "#sobre" },
+  { label: "Temas", href: "#temas" },
+  { label: "Participantes", href: "#participantes" },
+  { label: "Inscrição", href: "#inscricao" },
+  { label: "Local", href: "#local" },
+  { label: "FAQ", href: "#faq" },
+];
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-deepNavy/82 text-white shadow-lg backdrop-blur-xl">
+      <nav
+        className="section-shell flex h-16 items-center justify-between gap-4"
+        aria-label="Menu principal"
+      >
+        <a
+          href="#topo"
+          className="focus-ring inline-flex shrink-0 rounded-md"
+          aria-label="Muda Angra - início"
+        >
+          <BrandLogo
+            variant="compact"
+            className="h-11 w-[168px] sm:w-[210px]"
+          />
+        </a>
+
+        <div className="hidden items-center gap-1 lg:flex">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="focus-ring group relative rounded-full px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-white"
+            >
+              {link.label}
+              <span className="absolute inset-x-3 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-brasilYellow transition group-hover:scale-x-100" />
+            </a>
+          ))}
+        </div>
+
+        <a
+          href="#inscricao"
+          className="focus-ring hidden rounded-full bg-brasilYellow px-5 py-2.5 text-sm font-black text-deepNavy shadow-warm transition hover:-translate-y-0.5 hover:bg-gold lg:inline-flex"
+        >
+          Confirmar presença
+        </a>
+
+        <button
+          className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 lg:hidden"
+          type="button"
+          aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((current) => !current)}
+        >
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      {isOpen && (
+        <div className="border-t border-white/10 bg-deepNavy lg:hidden">
+          <div className="section-shell grid gap-2 py-4">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="focus-ring rounded-xl px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#inscricao"
+              onClick={() => setIsOpen(false)}
+              className="focus-ring mt-1 rounded-full bg-brasilYellow px-4 py-3 text-center text-sm font-black text-deepNavy"
+            >
+              Confirmar presença
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
