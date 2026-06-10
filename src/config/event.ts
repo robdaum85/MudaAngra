@@ -1,7 +1,7 @@
 export const EVENT_INFO = {
   name: "MUDA ANGRA",
   fullName: "Movimento União da Direita Angrense",
-  date: "23 de junho",
+  date: "29 de junho",
   location: "Clube Comercial de Angra dos Reis",
   time: "Horário a confirmar",
   whatsappGroupLink: "#",
