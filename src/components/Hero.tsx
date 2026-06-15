@@ -39,11 +39,8 @@ export default function Hero() {
           </p>
           <BrandLogo
             variant="complete"
-            className="mt-4 aspect-[2.7/1] w-full max-w-[620px]"
+            className="mt-4 aspect-[1.12/1] w-full max-w-[430px] sm:max-w-[520px]"
           />
-          <h1 className="mt-4 text-5xl font-black leading-[0.92] sm:text-6xl lg:text-7xl">
-            {EVENT_INFO.name}
-          </h1>
           <DecorativeDivider className="mt-5" />
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/90 sm:text-xl">
             Um encontro para debater ideias, desafios e perspectivas para o

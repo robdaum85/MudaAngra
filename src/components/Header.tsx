@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import BrandLogo from "./BrandLogo";
 
 const links = [
   { label: "Sobre", href: "#sobre" },
@@ -22,13 +21,12 @@ export default function Header() {
       >
         <a
           href="#topo"
-          className="focus-ring inline-flex shrink-0 rounded-md"
+          className="focus-ring inline-flex shrink-0 items-center rounded-md text-xl font-black uppercase tracking-wide sm:text-2xl"
           aria-label="Muda Angra - início"
         >
-          <BrandLogo
-            variant="compact"
-            className="h-11 w-[168px] sm:w-[210px]"
-          />
+          <span className="text-brasilGreen">Muda</span>
+          <span className="mx-1 text-brasilYellow">Angra</span>
+          <span className="h-2 w-2 rounded-full bg-oceanBlue" aria-hidden="true" />
         </a>
 
         <div className="hidden items-center gap-1 lg:flex">

@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <BrandLogo
               variant="complete"
-              className="aspect-[2.7/1] w-full max-w-[360px]"
+              className="aspect-[1.12/1] w-full max-w-[260px]"
             />
             <h2 className="mt-5 text-3xl font-black">{EVENT_INFO.name}</h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/70">

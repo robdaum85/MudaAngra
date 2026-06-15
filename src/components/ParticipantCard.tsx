@@ -4,16 +4,22 @@ type ParticipantCardProps = {
   name: string;
   role: string;
   image: string;
+  imageClassName?: string;
 };
 
-export default function ParticipantCard({ name, role, image }: ParticipantCardProps) {
+export default function ParticipantCard({
+  name,
+  role,
+  image,
+  imageClassName = "object-center",
+}: ParticipantCardProps) {
   return (
     <article className="group overflow-hidden rounded-[24px] border border-white/12 bg-white text-ink shadow-lift transition duration-300 hover:-translate-y-1">
       <div className="relative min-h-64 overflow-hidden bg-gradient-to-br from-oceanBlue/12 via-warmWhite to-brasilYellow/18">
         <img
           src={image}
           alt={`Foto de ${name}`}
-          className="absolute inset-0 z-10 h-full w-full object-cover"
+          className={`absolute inset-0 z-10 h-full w-full object-cover ${imageClassName}`}
           onError={(event) => {
             event.currentTarget.style.display = "none";
           }}

@@ -1,5 +1,4 @@
-import compactLogo from "../assets/logos/muda-angra-logo-2-transparent.png";
-import completeLogo from "../assets/logos/muda-angra-logo-1-transparent.png";
+import logoImage from "../assets/logos/logomudaangra.png";
 
 type BrandLogoProps = {
   variant?: "compact" | "complete";
@@ -9,14 +8,16 @@ type BrandLogoProps = {
 
 const logoMap = {
   compact: {
-    src: compactLogo,
+    src: logoImage,
     alt: "#MudaAngra",
-    position: "object-[50%_57%]",
+    fit: "object-cover object-[50%_38%]",
+    scale: "",
   },
   complete: {
-    src: completeLogo,
+    src: logoImage,
     alt: "Movimento Uniao #MudaAngra da Direita Angrense",
-    position: "object-[50%_56%]",
+    fit: "object-contain",
+    scale: "scale-[1.12]",
   },
 };
 
@@ -32,7 +33,7 @@ export default function BrandLogo({
       <img
         src={logo.src}
         alt={logo.alt}
-        className={`h-full w-full object-cover ${logo.position} ${imageClassName}`}
+        className={`h-full w-full ${logo.fit} ${logo.scale} ${imageClassName}`}
       />
     </span>
   );
