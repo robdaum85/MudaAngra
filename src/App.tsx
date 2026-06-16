@@ -4,7 +4,7 @@ import FloatingCTA from "./components/FloatingCTA";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-// import LaunchPopup from "./components/LaunchPopup";
+import LaunchPopup from "./components/LaunchPopup";
 import Location from "./components/Location";
 import Participants from "./components/Participants";
 import RegistrationForm from "./components/RegistrationForm";
@@ -27,7 +27,7 @@ export default function App() {
       </main>
       <Footer />
       <FloatingCTA />
-      {/* <LaunchPopup /> */}
+      <LaunchPopup />
     </div>
   );
 }

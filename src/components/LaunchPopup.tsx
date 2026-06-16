@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { MouseEvent, useEffect, useState } from "react";
-import popupImage from "../assets/images/event-popup.png";
+import popupImage from "../assets/popupatual.png";
 
 export default function LaunchPopup() {
   const [isOpen, setIsOpen] = useState(true);
