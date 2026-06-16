@@ -14,7 +14,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-deepNavy/82 text-white shadow-lg backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-yellow-900/10 bg-warmWhite/94 text-deepNavy shadow-lg backdrop-blur-xl">
       <nav
         className="section-shell flex h-16 items-center justify-between gap-4"
         aria-label="Menu principal"
@@ -34,7 +34,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="focus-ring group relative rounded-full px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-white"
+              className="focus-ring group relative rounded-full px-3 py-2 text-sm font-bold text-deepNavy/78 transition hover:text-deepNavy"
             >
               {link.label}
               <span className="absolute inset-x-3 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-brasilYellow transition group-hover:scale-x-100" />
@@ -50,7 +50,7 @@ export default function Header() {
         </a>
 
         <button
-          className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 lg:hidden"
+          className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-full border border-deepNavy/20 lg:hidden"
           type="button"
           aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={isOpen}
@@ -61,14 +61,14 @@ export default function Header() {
       </nav>
 
       {isOpen && (
-        <div className="border-t border-white/10 bg-deepNavy lg:hidden">
+        <div className="border-t border-yellow-900/10 bg-warmWhite lg:hidden">
           <div className="section-shell grid gap-2 py-4">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="focus-ring rounded-xl px-3 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+                className="focus-ring rounded-xl px-3 py-3 text-sm font-bold text-deepNavy/82 hover:bg-brasilGreen/10"
               >
                 {link.label}
               </a>

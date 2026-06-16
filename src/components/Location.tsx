@@ -1,14 +1,25 @@
 import { Car, MapPinned, Navigation } from "lucide-react";
+import L from "leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { EVENT_INFO } from "../config/event";
 import EventInfoCard from "./EventInfoCard";
 import SectionLabel from "./SectionLabel";
 
-const eventAddress = "Endereço completo a confirmar.";
+const eventAddress = "Rua do Comércio, 79 - Centro, Angra dos Reis/RJ.";
 const accessGuidance =
-  "Orientações de acesso serão divulgadas pela organização.";
+  "Use o mapa para localizar o Clube Comercial no Centro de Angra dos Reis.";
 const parkingInfo =
   "Informações sobre estacionamento serão atualizadas em breve.";
-const googleMapsEmbedUrl = "";
+const eventPosition: [number, number] = [-23.0078726, -44.3172561];
+const directionsUrl =
+  "https://www.openstreetmap.org/directions?to=-23.0078726%2C-44.3172561";
+const markerIcon = L.divIcon({
+  className: "",
+  html: '<span class="map-pin-marker" aria-hidden="true"></span>',
+  iconSize: [36, 36],
+  iconAnchor: [18, 36],
+  popupAnchor: [0, -34],
+});
 
 export default function Location() {
   return (
@@ -31,13 +42,13 @@ export default function Location() {
               <EventInfoCard
                 icon={<MapPinned size={22} />}
                 label="Endereço"
-                title="A confirmar"
+                title="Rua do Comércio, 79"
                 text={eventAddress}
               />
               <EventInfoCard
                 icon={<Navigation size={22} />}
                 label="Acesso"
-                title="Orientações"
+                title="Centro de Angra dos Reis"
                 text={accessGuidance}
               />
               <EventInfoCard
@@ -50,33 +61,29 @@ export default function Location() {
           </div>
 
           <div className="min-h-[360px] overflow-hidden rounded-[30px] border border-yellow-900/10 bg-white shadow-lift">
-            {googleMapsEmbedUrl ? (
-              <iframe
-                src={googleMapsEmbedUrl}
-                title="Mapa do Clube Comercial de Angra dos Reis"
-                className="h-full min-h-[360px] w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+            <MapContainer
+              center={eventPosition}
+              zoom={17}
+              scrollWheelZoom={false}
+              className="h-full min-h-[360px] w-full"
+              aria-label="Mapa do Clube Comercial de Angra dos Reis"
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-            ) : (
-              <div className="relative grid h-full min-h-[360px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_25%_25%,rgba(255,223,0,0.24),transparent_22%),radial-gradient(circle_at_75%_70%,rgba(0,151,57,0.18),transparent_28%),linear-gradient(135deg,#fffdf4,#eef6f0)] p-6 text-center">
-                <div
-                  className="absolute inset-0 opacity-35 [background-image:linear-gradient(0deg,rgba(0,39,118,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(0,39,118,0.12)_1px,transparent_1px)] [background-size:42px_42px]"
-                  aria-hidden="true"
-                />
-                <div className="relative max-w-xs rounded-[24px] border border-white/70 bg-white/86 p-6 shadow-soft backdrop-blur">
-                  <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-brasilGreen text-white shadow-lift">
-                    <MapPinned size={34} />
-                  </span>
-                  <h3 className="mt-4 text-xl font-black text-ink">
-                    Mapa em breve
-                  </h3>
-                  <p className="mt-2 text-sm font-bold leading-6 text-slate-700">
-                    O mapa será inserido quando o link for confirmado.
-                  </p>
-                </div>
-              </div>
-            )}
+              <Marker position={eventPosition} icon={markerIcon}>
+                <Popup>
+                  <strong>{EVENT_INFO.location}</strong>
+                  <br />
+                  {eventAddress}
+                  <br />
+                  <a href={directionsUrl} target="_blank" rel="noreferrer">
+                    Abrir rota
+                  </a>
+                </Popup>
+              </Marker>
+            </MapContainer>
           </div>
         </div>
       </div>

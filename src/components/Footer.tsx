@@ -12,7 +12,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-deepNavy pb-24 pt-0 text-white sm:pb-12">
+    <footer className="bg-warmWhite pb-24 pt-0 text-ink sm:pb-12">
       <div className="h-1.5 bg-gradient-to-r from-brasilGreen via-brasilYellow to-oceanBlue" />
       <div className="section-shell">
         <div className="grid gap-8 py-12 md:grid-cols-3">
@@ -22,7 +22,7 @@ export default function Footer() {
               className="aspect-[1.12/1] w-full max-w-[260px]"
             />
             <h2 className="mt-5 text-3xl font-black">{EVENT_INFO.name}</h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-white/70">
+            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-700">
               {EVENT_INFO.fullName}
               <br />
               Angra dos Reis • Costa Verde
@@ -30,30 +30,30 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-black uppercase tracking-[0.18em] text-brasilYellow">
+            <h3 className="text-sm font-black uppercase tracking-[0.18em] text-forestGreen">
               Links rápidos
             </h3>
             <div className="mt-4 grid gap-3 text-sm font-semibold">
               <a
-                className="focus-ring rounded-md text-white/78 hover:text-white"
+                className="focus-ring rounded-md text-slate-700 hover:text-brasilBlue"
                 href="#sobre"
               >
                 Sobre
               </a>
               <a
-                className="focus-ring rounded-md text-white/78 hover:text-white"
+                className="focus-ring rounded-md text-slate-700 hover:text-brasilBlue"
                 href="#temas"
               >
                 Temas
               </a>
               <a
-                className="focus-ring rounded-md text-white/78 hover:text-white"
+                className="focus-ring rounded-md text-slate-700 hover:text-brasilBlue"
                 href="#inscricao"
               >
                 Inscrição
               </a>
               <a
-                className="focus-ring rounded-md text-white/78 hover:text-white"
+                className="focus-ring rounded-md text-slate-700 hover:text-brasilBlue"
                 href="#local"
               >
                 Local
@@ -62,32 +62,32 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-black uppercase tracking-[0.18em] text-brasilYellow">
+            <h3 className="text-sm font-black uppercase tracking-[0.18em] text-forestGreen">
               Canais oficiais
             </h3>
             <div className="mt-4 grid gap-3 text-sm font-semibold">
               <a
-                className="focus-ring inline-flex items-center gap-2 rounded-md text-white/80 hover:text-white"
+                className="focus-ring inline-flex items-center gap-2 rounded-md text-slate-700 hover:text-brasilBlue"
                 href={links.instagram}
               >
                 <Instagram size={18} />
                 Instagram
               </a>
               <a
-                className="focus-ring inline-flex items-center gap-2 rounded-md text-white/80 hover:text-white"
+                className="focus-ring inline-flex items-center gap-2 rounded-md text-slate-700 hover:text-brasilBlue"
                 href="#inscricao"
               >
                 <MessageCircle size={18} />
                 WhatsApp
               </a>
               <a
-                className="focus-ring rounded-md text-white/80 hover:text-white"
+                className="focus-ring rounded-md text-slate-700 hover:text-brasilBlue"
                 href={links.privacy}
               >
                 Política de Privacidade
               </a>
               <a
-                className="focus-ring rounded-md text-white/80 hover:text-white"
+                className="focus-ring rounded-md text-slate-700 hover:text-brasilBlue"
                 href={links.terms}
               >
                 Termos de Uso
@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 text-sm text-white/60">
+        <div className="border-t border-yellow-900/10 pt-6 text-sm text-slate-600">
           © {currentYear} {EVENT_INFO.name}. Todos os direitos reservados.
         </div>
       </div>
