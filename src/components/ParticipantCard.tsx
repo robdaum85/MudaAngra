@@ -1,15 +1,11 @@
-import { BadgeCheck } from "lucide-react";
-
 type ParticipantCardProps = {
   name: string;
-  role: string;
   image: string;
   imageClassName?: string;
 };
 
 export default function ParticipantCard({
   name,
-  role,
   image,
   imageClassName = "object-center",
 }: ParticipantCardProps) {
@@ -32,19 +28,10 @@ export default function ParticipantCard({
             <p className="mt-4 text-sm font-black uppercase tracking-[0.14em] text-forestGreen">Foto em breve</p>
           </div>
         </div>
-        <span className="absolute left-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-brasilGreen px-3 py-1 text-xs font-black text-white shadow-sm">
-          <BadgeCheck size={14} />
-          Presença confirmada
-        </span>
       </div>
 
-      <div className="p-5">
-        <span className="inline-flex rounded-full bg-brasilYellow/25 px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-brasilBlue">
-          Convidado
-        </span>
-        <h3 className="mt-4 text-xl font-black leading-tight">{name}</h3>
-        <p className="mt-2 text-sm font-semibold text-forestGreen">{role}</p>
-        <p className="mt-4 text-sm leading-6 text-slate-700">Mini bio e informações adicionais poderão ser incluídas em breve.</p>
+      <div className="p-5 text-center">
+        <h3 className="text-xl font-black leading-tight">{name}</h3>
       </div>
     </article>
   );

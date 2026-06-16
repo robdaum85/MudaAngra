@@ -39,6 +39,8 @@ export default function ConfirmationModal({
     return null;
   }
 
+  const hasWhatsappGroup = whatsappGroupLink !== "#";
+
   function handleOverlayClick(event: MouseEvent<HTMLDivElement>) {
     if (event.target === event.currentTarget) {
       onClose();
@@ -46,7 +48,7 @@ export default function ConfirmationModal({
   }
 
   function handleGroupClick(event: MouseEvent<HTMLAnchorElement>) {
-    if (whatsappGroupLink === "#") {
+    if (!hasWhatsappGroup) {
       event.preventDefault();
     }
   }
@@ -82,14 +84,13 @@ export default function ConfirmationModal({
             id="confirmation-modal-title"
             className="mt-2 text-3xl font-black leading-tight text-deepNavy"
           >
-            Presença confirmada!
+            Cadastro concluído!
           </h2>
         </div>
 
         <p className="mt-5 text-base leading-8 text-slate-700">
-          Obrigado por confirmar sua presença no {EVENT_INFO.name}. Seus dados
-          foram recebidos e a organização poderá enviar novas informações pelos
-          canais informados.
+          Obrigado por confirmar sua presença. Contamos com você no{" "}
+          {EVENT_INFO.name}. O acesso ao grupo oficial está liberado.
         </p>
 
         <div className="mt-6 grid gap-3">
@@ -111,18 +112,20 @@ export default function ConfirmationModal({
         </div>
 
         <p className="mt-5 rounded-[20px] border border-brasilYellow/40 bg-brasilYellow/18 px-4 py-3 text-sm font-semibold leading-6 text-deepNavy">
-          Fique atento ao WhatsApp e ao e-mail informados no credenciamento.
+          Entre no grupo para acompanhar comunicados, orientações de acesso e
+          novidades do movimento.
         </p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]">
           <a
             href={whatsappGroupLink}
-            target={whatsappGroupLink === "#" ? undefined : "_blank"}
-            rel={whatsappGroupLink === "#" ? undefined : "noreferrer"}
+            target={hasWhatsappGroup ? "_blank" : undefined}
+            rel={hasWhatsappGroup ? "noreferrer" : undefined}
             onClick={handleGroupClick}
-            className="focus-ring inline-flex items-center justify-center rounded-full bg-brasilYellow px-5 py-3 text-sm font-black uppercase text-deepNavy shadow-warm transition hover:bg-gold"
+            aria-disabled={!hasWhatsappGroup}
+            className="focus-ring inline-flex items-center justify-center rounded-full bg-brasilYellow px-5 py-3 text-sm font-black uppercase text-deepNavy shadow-warm transition hover:bg-gold aria-disabled:cursor-not-allowed aria-disabled:opacity-60"
           >
-            Entrar no grupo oficial
+            {hasWhatsappGroup ? "Entrar no grupo oficial" : "Link em breve"}
           </a>
           <button
             type="button"

@@ -75,20 +75,7 @@ export default function Footer() {
               </a>
               <a
                 className="focus-ring inline-flex items-center gap-2 rounded-md text-white/80 hover:text-white"
-                href={EVENT_INFO.whatsappGroupLink}
-                target={
-                  EVENT_INFO.whatsappGroupLink === "#" ? undefined : "_blank"
-                }
-                rel={
-                  EVENT_INFO.whatsappGroupLink === "#"
-                    ? undefined
-                    : "noreferrer"
-                }
-                onClick={(event) => {
-                  if (EVENT_INFO.whatsappGroupLink === "#") {
-                    event.preventDefault();
-                  }
-                }}
+                href="#inscricao"
               >
                 <MessageCircle size={18} />
                 WhatsApp

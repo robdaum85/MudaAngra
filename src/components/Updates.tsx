@@ -1,5 +1,4 @@
 import { MessageCircle } from "lucide-react";
-import { EVENT_INFO } from "../config/event";
 import SectionLabel from "./SectionLabel";
 
 export default function Updates() {
@@ -23,12 +22,12 @@ export default function Updates() {
                 Entre no grupo oficial de informações
               </h2>
               <p className="mt-4 text-base leading-8 text-white/85">
-                Receba comunicados, orientações de acesso, programação e
-                novidades sobre o evento.
+                O acesso ao grupo é liberado após o preenchimento do
+                credenciamento.
               </p>
               <p className="mt-3 text-sm font-semibold text-brasilYellow">
-                Canal oficial para comunicados, orientações e novidades do MUDA
-                ANGRA.
+                Confirme seus dados para receber comunicados, orientações e
+                novidades do MUDA ANGRA.
               </p>
             </div>
 
@@ -37,24 +36,11 @@ export default function Updates() {
                 <MessageCircle size={34} />
               </span>
               <a
-                href={EVENT_INFO.whatsappGroupLink}
-                target={
-                  EVENT_INFO.whatsappGroupLink === "#" ? undefined : "_blank"
-                }
-                rel={
-                  EVENT_INFO.whatsappGroupLink === "#"
-                    ? undefined
-                    : "noreferrer"
-                }
-                onClick={(event) => {
-                  if (EVENT_INFO.whatsappGroupLink === "#") {
-                    event.preventDefault();
-                  }
-                }}
+                href="#inscricao"
                 className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-full bg-brasilYellow px-6 py-4 text-sm font-black uppercase text-deepNavy shadow-warm transition hover:-translate-y-0.5 hover:bg-gold sm:w-auto"
               >
                 <MessageCircle size={21} />
-                Entrar no grupo oficial
+                Preencher cadastro
               </a>
             </div>
           </div>

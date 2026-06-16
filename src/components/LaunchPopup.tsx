@@ -59,7 +59,7 @@ export default function LaunchPopup() {
 
         <img
           src={popupImage}
-          alt="Lancamento Muda Angra no dia 29 de junho, 18h30, no Clube Comercial de Angra dos Reis"
+          alt="Lancamento Muda Angra no dia 30 de junho, 18h30, no Clube Comercial de Angra dos Reis"
           className="block max-h-[94vh] w-full object-contain"
         />
       </section>

@@ -19,7 +19,7 @@ const initialForm: FormState = {
   nome: "",
   telefone: "",
   email: "",
-  cidade: "",
+  cidade: "Angra dos Reis",
   bairro: "",
   origem: "",
   convidadoPor: "",
@@ -28,10 +28,30 @@ const initialForm: FormState = {
 const requiredFields: Array<keyof FormState> = [
   "nome",
   "telefone",
-  "email",
   "cidade",
   "bairro",
 ];
+
+const cityOptions = [
+  "Angra dos Reis",
+  "Mangaratiba",
+  "Paraty",
+  "Itaguaí",
+  "Rio Claro",
+  "Rio de Janeiro",
+];
+
+const originOptions = ["Internet", "Rádio", "Televisão", "Rua"];
+
+function isGoogleFormConfigured() {
+  const entries = Object.values(EVENT_INFO.googleFormEntries);
+
+  return (
+    EVENT_INFO.googleFormAction.includes("docs.google.com/forms") &&
+    !EVENT_INFO.googleFormAction.includes("SEU_FORM_ID") &&
+    entries.every((entry) => /^entry\.\d+$/.test(entry))
+  );
+}
 
 export default function RegistrationForm() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -67,6 +87,13 @@ export default function RegistrationForm() {
       return;
     }
 
+    if (!isGoogleFormConfigured()) {
+      setFormError(
+        "Formulario ainda nao configurado. Preencha a URL formResponse e as entries do Google Forms em src/config/event.ts.",
+      );
+      return;
+    }
+
     const formData = new FormData();
     const entries = EVENT_INFO.googleFormEntries;
 
@@ -77,6 +104,9 @@ export default function RegistrationForm() {
     formData.append(entries.bairro, form.bairro);
     formData.append(entries.origem, form.origem);
     formData.append(entries.convidadoPor, form.convidadoPor);
+    formData.append("fvv", "1");
+    formData.append("fbzx", "-6372066568266377856");
+    formData.append("pageHistory", "0");
 
     setIsSubmitting(true);
     setFormError("");
@@ -144,12 +174,12 @@ export default function RegistrationForm() {
                 onChange={(value) => updateField("email", value)}
                 autoComplete="email"
               />
-              <Field
+              <SelectField
                 label="Cidade"
                 value={form.cidade}
+                options={cityOptions}
                 error={errors.cidade}
                 onChange={(value) => updateField("cidade", value)}
-                autoComplete="address-level2"
               />
               <Field
                 label="Bairro"
@@ -157,9 +187,10 @@ export default function RegistrationForm() {
                 error={errors.bairro}
                 onChange={(value) => updateField("bairro", value)}
               />
-              <Field
+              <RadioGroup
                 label="Como ficou sabendo do evento?"
                 value={form.origem}
+                options={originOptions}
                 onChange={(value) => updateField("origem", value)}
               />
               <div className="sm:col-span-2">
@@ -215,11 +246,7 @@ function Field({
   autoComplete,
   onChange,
 }: FieldProps) {
-  const id = label
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-");
+  const id = getFieldId(label);
 
   return (
     <label className="block text-sm font-bold text-ink" htmlFor={id}>
@@ -244,4 +271,99 @@ function Field({
       )}
     </label>
   );
+}
+
+type SelectFieldProps = {
+  label: string;
+  value: string;
+  options: string[];
+  error?: string;
+  onChange: (value: string) => void;
+};
+
+function SelectField({
+  label,
+  value,
+  options,
+  error,
+  onChange,
+}: SelectFieldProps) {
+  const id = getFieldId(label);
+
+  return (
+    <label className="block text-sm font-bold text-ink" htmlFor={id}>
+      {label}
+      <select
+        id={id}
+        value={value}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
+        onChange={(event) => onChange(event.target.value)}
+        className="focus-ring mt-2 w-full rounded-2xl border border-yellow-900/15 bg-warmWhite px-4 py-3 text-base font-normal text-ink outline-none transition focus:border-brasilGreen focus:bg-white"
+      >
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      {error && (
+        <span
+          id={`${id}-error`}
+          className="mt-2 block text-xs font-semibold text-red-700"
+        >
+          {error}
+        </span>
+      )}
+    </label>
+  );
+}
+
+type RadioGroupProps = {
+  label: string;
+  value: string;
+  options: string[];
+  onChange: (value: string) => void;
+};
+
+function RadioGroup({ label, value, options, onChange }: RadioGroupProps) {
+  const id = getFieldId(label);
+
+  return (
+    <fieldset className="block text-sm font-bold text-ink">
+      <legend>{label}</legend>
+      <div className="mt-2 grid gap-2 rounded-2xl border border-yellow-900/15 bg-warmWhite p-3 sm:grid-cols-2">
+        {options.map((option) => {
+          const optionId = `${id}-${getFieldId(option)}`;
+
+          return (
+            <label
+              key={option}
+              className="focus-within:ring-brasilGreen/40 flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-white focus-within:ring-2"
+              htmlFor={optionId}
+            >
+              <input
+                id={optionId}
+                type="radio"
+                name={id}
+                value={option}
+                checked={value === option}
+                onChange={(event) => onChange(event.target.value)}
+                className="h-4 w-4 accent-brasilGreen"
+              />
+              {option}
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+}
+
+function getFieldId(label: string) {
+  return label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-");
 }
