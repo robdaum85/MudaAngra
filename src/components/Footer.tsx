@@ -3,7 +3,6 @@ import { EVENT_INFO } from "../config/event";
 import BrandLogo from "./BrandLogo";
 
 const links = {
-  instagram: "#",
   privacy: "#",
   terms: "#",
 };
@@ -68,10 +67,12 @@ export default function Footer() {
             <div className="mt-4 grid gap-3 text-sm font-semibold">
               <a
                 className="focus-ring inline-flex items-center gap-2 rounded-md text-slate-700 hover:text-brasilBlue"
-                href={links.instagram}
+                href={EVENT_INFO.instagramLink}
+                target="_blank"
+                rel="noreferrer"
               >
                 <Instagram size={18} />
-                Instagram
+                {EVENT_INFO.instagramHandle}
               </a>
               <a
                 className="focus-ring inline-flex items-center gap-2 rounded-md text-slate-700 hover:text-brasilBlue"

@@ -1,4 +1,5 @@
-import { MessageCircle } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
+import { EVENT_INFO } from "../config/event";
 import SectionLabel from "./SectionLabel";
 
 export default function Updates() {
@@ -29,12 +30,25 @@ export default function Updates() {
                 Confirme seus dados para receber comunicados, orientações e
                 novidades do MUDA ANGRA.
               </p>
+              <p className="mt-5 text-sm font-semibold text-white/85">
+                Siga tambem o Instagram oficial {EVENT_INFO.instagramHandle} e
+                acompanhe os proximos comunicados do movimento.
+              </p>
             </div>
 
             <div className="flex flex-col items-start gap-4 lg:items-end">
               <span className="grid h-16 w-16 place-items-center rounded-full bg-white/12 text-brasilYellow backdrop-blur">
-                <MessageCircle size={34} />
+                <Instagram size={34} />
               </span>
+              <a
+                href={EVENT_INFO.instagramLink}
+                target="_blank"
+                rel="noreferrer"
+                className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-4 text-sm font-black uppercase text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-brasilYellow hover:bg-white/20 sm:w-auto"
+              >
+                <Instagram size={21} />
+                Seguir no Instagram
+              </a>
               <a
                 href="#inscricao"
                 className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-full bg-brasilYellow px-6 py-4 text-sm font-black uppercase text-deepNavy shadow-warm transition hover:-translate-y-0.5 hover:bg-gold sm:w-auto"
