@@ -4,7 +4,7 @@ export const EVENT_INFO = {
   date: "30 de junho",
   location: "Clube Comercial de Angra dos Reis",
   time: "Horário a confirmar",
-  whatsappGroupLink: "#",
+  whatsappGroupLink: "https://chat.whatsapp.com/F6p9pP1U6EvBoUjskGeEYz?s=cl&p=i&ilr=2&amv=1",
   googleFormAction: "https://docs.google.com/forms/d/e/1FAIpQLSfIHBqgn26_jwKuj_I0Xnu_-2S6jIFbyfbFsOVSB-co8oOGQQ/formResponse",
   googleFormEntries: {
     nome: "entry.2026346337",
