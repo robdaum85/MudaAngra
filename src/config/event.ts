@@ -3,7 +3,7 @@ export const EVENT_INFO = {
   fullName: "Movimento União da Direita Angrense",
   date: "30 de junho",
   location: "Clube Comercial de Angra dos Reis",
-  time: "Horário a confirmar",
+  time: "18:30",
   instagramHandle: "@mudaangraoficial",
   instagramLink: "https://www.instagram.com/mudaangraoficial/",
   whatsappGroupLink: "https://chat.whatsapp.com/F6p9pP1U6EvBoUjskGeEYz?s=cl&p=i&ilr=2&amv=1",

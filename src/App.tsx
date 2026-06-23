@@ -10,6 +10,7 @@ import Participants from "./components/Participants";
 import RegistrationForm from "./components/RegistrationForm";
 import Topics from "./components/Topics";
 import Updates from "./components/Updates";
+import VideoHighlight from "./components/VideoHighlight";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <VideoHighlight />
         <About />
         <Topics />
         <Participants />
