@@ -1,7 +1,6 @@
 import { FormEvent, useState } from "react";
 import { Send } from "lucide-react";
 import { EVENT_INFO } from "../config/event";
-import ConfirmationModal from "./ConfirmationModal";
 import FormBenefitCard from "./FormBenefitCard";
 import SectionLabel from "./SectionLabel";
 
@@ -59,7 +58,6 @@ export default function RegistrationForm() {
     Partial<Record<keyof FormState, string>>
   >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formError, setFormError] = useState("");
 
   function updateField(field: keyof FormState, value: string) {
@@ -120,7 +118,7 @@ export default function RegistrationForm() {
 
       setForm(initialForm);
       setErrors({});
-      setIsModalOpen(true);
+      window.location.assign("/obrigado");
     } catch {
       setFormError(
         "Não foi possível enviar sua confirmação. Verifique sua conexão e tente novamente.",
@@ -219,12 +217,6 @@ export default function RegistrationForm() {
           </div>
         </div>
       </div>
-
-      <ConfirmationModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        whatsappGroupLink={EVENT_INFO.whatsappGroupLink}
-      />
     </section>
   );
 }

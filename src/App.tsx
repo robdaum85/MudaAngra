@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import About from "./components/About";
+import ConfirmationModal from "./components/ConfirmationModal";
 import FAQ from "./components/FAQ";
 import FloatingCTA from "./components/FloatingCTA";
 import Footer from "./components/Footer";
@@ -12,8 +13,23 @@ import RegistrationForm from "./components/RegistrationForm";
 import Topics from "./components/Topics";
 import Updates from "./components/Updates";
 import VideoHighlight from "./components/VideoHighlight";
+import { EVENT_INFO } from "./config/event";
 
 export default function App() {
+  const [isThankYouOpen, setIsThankYouOpen] = useState(
+    () => window.location.pathname === "/obrigado",
+  );
+
+  useEffect(() => {
+    function handlePopState() {
+      setIsThankYouOpen(window.location.pathname === "/obrigado");
+    }
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   useEffect(() => {
     if (window.location.hash !== "#inscricao") {
       return;
@@ -28,6 +44,11 @@ export default function App() {
 
     return () => window.clearTimeout(timeoutId);
   }, []);
+
+  function closeThankYouModal() {
+    window.history.pushState({}, "", "/");
+    setIsThankYouOpen(false);
+  }
 
   return (
     <div className="min-h-screen brasil-texture text-ink">
@@ -46,6 +67,11 @@ export default function App() {
       <Footer />
       <FloatingCTA />
       <LaunchPopup />
+      <ConfirmationModal
+        isOpen={isThankYouOpen}
+        onClose={closeThankYouModal}
+        whatsappGroupLink={EVENT_INFO.whatsappGroupLink}
+      />
     </div>
   );
 }
