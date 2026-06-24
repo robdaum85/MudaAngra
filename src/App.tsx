@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import About from "./components/About";
 import FAQ from "./components/FAQ";
 import FloatingCTA from "./components/FloatingCTA";
@@ -13,6 +14,21 @@ import Updates from "./components/Updates";
 import VideoHighlight from "./components/VideoHighlight";
 
 export default function App() {
+  useEffect(() => {
+    if (window.location.hash !== "#inscricao") {
+      return;
+    }
+
+    const scrollToRegistration = () => {
+      document.getElementById("inscricao")?.scrollIntoView({ block: "start" });
+    };
+
+    scrollToRegistration();
+    const timeoutId = window.setTimeout(scrollToRegistration, 250);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="min-h-screen brasil-texture text-ink">
       <Header />

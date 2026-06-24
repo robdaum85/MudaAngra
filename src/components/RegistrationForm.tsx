@@ -131,7 +131,7 @@ export default function RegistrationForm() {
   }
 
   return (
-    <section id="inscricao" className="brasil-texture py-16 sm:py-20">
+    <section id="inscricao" className="brasil-texture scroll-mt-20 py-16 sm:py-20">
       <div className="section-shell">
         <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <FormBenefitCard />
