@@ -3,7 +3,7 @@ import { MouseEvent, useEffect, useState } from "react";
 import popupImage from "../assets/popupatual.png";
 
 export default function LaunchPopup() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(() => window.location.hash !== "#inscricao");
 
   useEffect(() => {
     if (!isOpen) {
