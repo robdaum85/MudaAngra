@@ -118,7 +118,7 @@ export default function RegistrationForm() {
 
       setForm(initialForm);
       setErrors({});
-      window.location.assign("/obrigado");
+      window.location.href = "/obrigado";
     } catch {
       setFormError(
         "Não foi possível enviar sua confirmação. Verifique sua conexão e tente novamente.",
