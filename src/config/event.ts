@@ -6,7 +6,7 @@ export const EVENT_INFO = {
   time: "18:30",
   instagramHandle: "@mudaangraoficial",
   instagramLink: "https://www.instagram.com/mudaangraoficial/",
-  whatsappGroupLink: "https://chat.whatsapp.com/F6p9pP1U6EvBoUjskGeEYz?s=cl&p=i&ilr=2&amv=1",
+  whatsappGroupLink: "https://chat.whatsapp.com/HN9hJdGYkKL8BLLa30dKHt",
   googleFormAction: "https://docs.google.com/forms/d/e/1FAIpQLSfIHBqgn26_jwKuj_I0Xnu_-2S6jIFbyfbFsOVSB-co8oOGQQ/formResponse",
   googleFormEntries: {
     nome: "entry.2026346337",
